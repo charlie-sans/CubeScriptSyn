@@ -1,0 +1,69 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "CubeScript",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"name": "constant.numeric.cusp",
+			"match": "\\b(0x[0-9a-fA-F]+|\\d+)\\b"
+		},
+		{
+			"name": "variable.other.cusp",
+			"match": "\\b\\w+\\b"
+		},
+		{
+			"name": "variable.parameter.cusp",
+			"match": "\\b\\w+\\b"
+		}
+
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.cusp",
+				"match": "\\b(if|while|for|return)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.cusp",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "comment.block.cusp",
+					"match": "\\\\."
+				}
+			]
+		},
+		"comments": {
+			"name": "comment.block.cusp",
+			"begin": "//",
+			"end": "$"
+			
+		},
+		"functions":
+		{
+			
+			"name": "function",
+			"match": "\\bfunction\\b",
+			"captures": {
+				"0": {
+					"name": "keyword.function.cusp"
+				}
+			},
+			"begin": "\\(",
+			"end": "\\)"
+			
+		}
+		
+	},
+	"scopeName": "main.cusp"
+}
